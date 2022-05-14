@@ -4,6 +4,10 @@
 <h2>
     PORTAFOLIO
 </h2>
+@if(session('estado'))
+{{session('estado')}}
+@endif
+<br/>
 <a href="{{ route('projects.create') }}">
     Crear nuevo proyecto
 </a>

@@ -22,6 +22,7 @@
     </head>
     <body>
         @include('partials.nav')
+        @include('partials/sessions')
         @yield('content')
     </body>
 </html>
