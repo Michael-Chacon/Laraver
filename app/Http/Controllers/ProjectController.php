@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateProyectRequest;
 
-class PortafolioController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,13 +15,9 @@ class PortafolioController extends Controller
      */
     public function index()
     {
-        $portafolio = [
-            ['titulo' => 'Portafolio 1'],
-            ['titulo' => 'portafolio 2'],
-            ['titulo' => 'portafolio 3'],
-        ];
+        $projects = Project::latest()->paginate();
 
-        return view('portafolio', compact('portafolio'));
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -29,7 +27,9 @@ class PortafolioController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create', [
+            'project' => new Project,
+        ]);
     }
 
     /**
@@ -38,9 +38,11 @@ class PortafolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProyectRequest $request)
     {
-        //
+        Project::create($request->validated());
+
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -49,9 +51,12 @@ class PortafolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        //
+        // return $id;
+        // $proyectos = Project::findOrFail($id);
+
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -60,9 +65,9 @@ class PortafolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -72,9 +77,11 @@ class PortafolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Project $project, CreateProyectRequest $request)
     {
-        //
+        $project->update( $request->validated());
+
+        return redirect()->route('projects.show', $project);
     }
 
     /**
@@ -83,8 +90,10 @@ class PortafolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('projects.index');
     }
 }

@@ -1,22 +1,22 @@
 <nav>
     <ul>
         <li class="{{ validarRuta('home') }}">
-            <a href="/">
+            <a href="{{ route('home') }}">
                 Home
             </a>
         </li>
         <li class="{{ validarRuta('about') }}">
-            <a href="/about">
+            <a href="{{ route('about') }}">
                 About
             </a>
         </li>
-        <li class="{{ validarRuta('contacto') }}">
-            <a href="/contact">
+        <li class="{{ validarRuta('contacts.*') }}">
+            <a href="{{ route('contacts.index') }}">
                 Contacto
             </a>
         </li>
-        <li class="{{ validarRuta('portafolio') }}">
-            <a href="/portafolio">
+        <li class="{{ validarRuta('projects.*') }}">
+            <a href="{{ route('projects.index') }}">
                 Portafolio
             </a>
         </li>

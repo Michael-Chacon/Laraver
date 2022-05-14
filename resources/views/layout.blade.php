@@ -13,6 +13,11 @@
                 color: red;
                 text-decoration: none;
             }
+             .mal{
+                color: red;
+                font-size: 20;
+                font-weight: 40;
+             }
         </style>
     </head>
     <body>
