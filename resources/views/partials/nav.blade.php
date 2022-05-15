@@ -20,5 +20,12 @@
                 Portafolio
             </a>
         </li>
+        @guest
+        <li>
+            <a href="{{ route('login') }}">
+                login
+            </a>
+        </li>
+        @endguest
     </ul>
 </nav>
