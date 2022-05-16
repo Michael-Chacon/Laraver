@@ -8,9 +8,11 @@
 {{session('estado')}}
 @endif
 <br/>
+@auth
 <a href="{{ route('projects.create') }}">
     Crear nuevo proyecto
 </a>
+@endauth
 <ul>
     {{-- Ciclo para mostrar los datos  --}}
     @forelse($projects as $project)

@@ -4,6 +4,7 @@
 <h1>
     {{ $project->title }}
 </h1>
+@auth
 <a href="{{ route('projects.edit', $project) }}">
     Editar proyecto
 </a>
@@ -13,6 +14,7 @@
         Eliminar
     </button>
 </form>
+@endauth
 <p>
     {{ $project->description }}
 </p>
