@@ -11286,3 +11286,13 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.active a {
+  color: red;
+  text-decoration: none;
+}
+
+.mal {
+  color: red;
+  font-size: 20;
+  font-weight: 40;
+}

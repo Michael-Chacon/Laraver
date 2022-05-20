@@ -8,21 +8,18 @@
                 </title>
             </meta>
         </meta>
+        <link href="/css/app.css" rel="stylesheet"/>
+        <script defer="" src="/js/app.js">
+        </script>
         <style>
-            .active a {
-                color: red;
-                text-decoration: none;
-            }
-             .mal{
-                color: red;
-                font-size: 20;
-                font-weight: 40;
-             }
         </style>
     </head>
     <body>
         @include('partials.nav')
         @include('partials/sessions')
+        <button class="btn btn-outline-success">
+            hola
+        </button>
         @yield('content')
     </body>
 </html>

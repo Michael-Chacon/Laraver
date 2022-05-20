@@ -1,8 +1,15 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+.active a {
+    color: red;
+    text-decoration: none;
+}
+.mal {
+    color: red;
+    font-size: 20;
+    font-weight: 40;
+}
