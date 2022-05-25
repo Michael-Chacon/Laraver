@@ -31,4 +31,3 @@ Route::resource('contact', 'App\Http\Controllers\ContactController')->names('con
 // Route::post('/contact', 'App\Http\Controllers\ContactController@store')->name('contacts.store');
 
 Auth::routes();
-

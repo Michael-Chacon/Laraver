@@ -22,4 +22,16 @@
         </button>
         @yield('content')
     </body>
+    </head>
 </html>
+<body>
+    <section class="container-fluid">
+        <header>
+            @include('partials.nav')
+            @include('partials.sessions')
+        </header>
+        <main class="py-3 px-3">
+            @yield('content')
+        </main>
+    </section>
+</body>
