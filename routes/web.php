@@ -29,3 +29,7 @@ Route::resource('contact', 'App\Http\Controllers\ContactController')->names('con
 // Route::get('/contact/{id}', 'App\Http\Controllers\ContactController@show')->name('contacts.show');
 // # Ruta para guardar los datos con el metodo store
 // Route::post('/contact', 'App\Http\Controllers\ContactController@store')->name('contacts.store');
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -8,21 +8,19 @@
                 </title>
             </meta>
         </meta>
-        <style>
-            .active a {
-                color: red;
-                text-decoration: none;
-            }
-             .mal{
-                color: red;
-                font-size: 20;
-                font-weight: 40;
-             }
-        </style>
+        <link href="/css/app.css" rel="stylesheet"/>
+        <script defer="" src="/js/app.js">
+        </script>
     </head>
-    <body>
-        @include('partials.nav')
-        @include('partials/sessions')
-        @yield('content')
-    </body>
 </html>
+<body>
+    <section class="container-fluid">
+        <header>
+            @include('partials.nav')
+            @include('partials.sessions')
+        </header>
+        <main class="py-3 px-3">
+            @yield('content')
+        </main>
+    </section>
+</body>

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProyectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateProyectRequest;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -79,7 +83,7 @@ class ProjectController extends Controller
      */
     public function update(Project $project, CreateProyectRequest $request)
     {
-        $project->update( $request->validated());
+        $project->update($request->validated());
 
         return redirect()->route('projects.show', $project)->with('status', 'El proyecto fue actualizado con éxito');
     }
