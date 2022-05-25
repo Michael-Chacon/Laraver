@@ -14,16 +14,6 @@
         <style>
         </style>
     </head>
-    <body>
-        @include('partials.nav')
-        @include('partials/sessions')
-        <button class="btn btn-outline-success">
-            hola
-        </button>
-        @yield('content')
-    </body>
-    </head>
-</html>
 <body>
     <section class="container-fluid">
         <header>
@@ -35,3 +25,4 @@
         </main>
     </section>
 </body>
+</html>
