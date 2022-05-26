@@ -7,8 +7,12 @@
         <h1 class="text-secondary text-center">
             Formulario para registrar datos
         </h1>
-        <form action="{{ route('projects.store') }}" method="post">
+        <form action="{{ route('projects.store') }}" method="post" enctype="multipart/form-data">
             @csrf
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Seleccionar imagen</label>
+              <input class="form-control" type="file" id="formFile" name="img">
+          </div>
             <label class="form-label">
                 Titulo:
             </label>
@@ -30,7 +34,6 @@
                 </button>
             </div>
         </form>
-
     </div>
 </div>
 @endsection
