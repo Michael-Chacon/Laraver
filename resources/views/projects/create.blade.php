@@ -3,18 +3,10 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-4 bg-white p-5">
+    @include('partials.errores')
         <h1 class="text-secondary text-center">
             Formulario para registrar datos
         </h1>
-        @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>
-                {{ $error }}
-            </li>
-            @endforeach
-        </ul>
-        @endif
         <form action="{{ route('projects.store') }}" method="post">
             @csrf
             <label class="form-label">
