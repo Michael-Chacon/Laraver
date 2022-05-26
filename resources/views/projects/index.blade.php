@@ -19,6 +19,9 @@
                 @forelse($projects as $project)
                 <li class="list-group-item border-0 shadow-sm mb-3">
                     <a href="{{ route('projects.show', $project) }}" class="d-flex justify-content-between align-items-center">
+                        @if($project->image)
+                        <img src="/storage/{{ $project->image }}" alt="{{ $project->title }}">
+                        @endif
                         <span class="text-secondary font-weight-bold lead">
                             {{ $project->title }}
                         </span>
