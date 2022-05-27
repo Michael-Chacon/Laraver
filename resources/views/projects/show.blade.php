@@ -3,7 +3,10 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-4 p-5 bg-white">
-        <h1 class="text-secondary text-center">
+        @if($project->image)
+        <img src="/storage/{{ $project->image }}" class="card-img-top" alt="..." style="height:400px; object-fit: cover;">
+        @endif
+        <h1 class="text-secondary text-center mt-3">
             {{ $project->title }}
         </h1>
         <p class="lead ">
