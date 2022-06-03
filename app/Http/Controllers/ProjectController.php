@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateProyectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -47,7 +48,7 @@ class ProjectController extends Controller
         # En esta linea se optienen los  que se envian desde el formulario
         $proyecto = new Project($request->validated());
         # En esta linea se concatena la informacion de la imagen
-        $proyecto->image = $request->file('img')->store('images');
+        $proyecto->image = $request->file('image')->store('images');
         #  Aca se guada la informacion en la db
         $proyecto->save();
         return redirect()->route('projects.index')->with('status', 'El proyecto se almaceno con éxito');
@@ -87,7 +88,16 @@ class ProjectController extends Controller
      */
     public function update(Project $project, CreateProyectRequest $request)
     {
-        $project->update($request->validated());
+        if($request->hasFile('image')){
+            Storage::delete($project->image);
+            $project->fill($request->validated());
+
+            $project->image = $request->file('image')->store('images');
+
+            $project->save();
+        }else{
+            $project->update(array_filter($request->validated()));
+        }
 
         return redirect()->route('projects.show', $project)->with('status', 'El proyecto fue actualizado con éxito');
     }

@@ -31,6 +31,10 @@ class CreateProyectRequest extends FormRequest
                 'required',
                 Rule::unique('projects')->ignore($this->route('project')),
             ],
+            'image' => [
+                $this->route('project') ? 'nullable' : 'required',
+                'image',
+            ],
             'description' => 'required',
         ];
     }
