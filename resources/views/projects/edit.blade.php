@@ -7,7 +7,10 @@
             Formulario para editar datos
         </h1>
         @include('partials.errores')
-        <form action="{{ route('projects.update', $project) }}" method="post">
+        @if($project->image)
+            <img src="/storage/{{ $project->image }}" alt="" style="width: 350px;">
+        @endif
+        <form action="{{ route('projects.update', $project) }}" method="post" enctype="multipart/form-data">
             @method('PATCH')
             @include('projects._form', ['btn' => 'Actualizar'])
         </form>

@@ -11,7 +11,7 @@
             @csrf
             <div class="mb-3">
                 <label for="formFile" class="form-label">Seleccionar imagen</label>
-              <input class="form-control" type="file" id="formFile" name="img">
+              <input class="form-control" type="file" id="formFile" name="image">
           </div>
             <label class="form-label">
                 Titulo:
