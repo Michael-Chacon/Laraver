@@ -6,6 +6,7 @@ use App\Http\Requests\CreateProyectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ProjectController extends Controller
 {
@@ -51,6 +52,14 @@ class ProjectController extends Controller
         $proyecto->image = $request->file('image')->store('images');
         #  Aca se guada la informacion en la db
         $proyecto->save();
+
+        # Optimizar imagen
+        // Image::make(storage_path('app/public/images'.  $project->image));
+        $image = Image::make(Storage::get($project->image));
+        $image->widen(600)->limitColors(255)->encode();
+
+        Storage::put($project->image, (string) $image);
+
         return redirect()->route('projects.index')->with('status', 'El proyecto se almaceno con éxito');
     }
 
@@ -88,14 +97,19 @@ class ProjectController extends Controller
      */
     public function update(Project $project, CreateProyectRequest $request)
     {
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             Storage::delete($project->image);
             $project->fill($request->validated());
 
             $project->image = $request->file('image')->store('images');
 
             $project->save();
-        }else{
+            # Optimizar imagen
+            // Image::make(storage_path('app/public/images'.  $project->image));
+            $image = Image::make(Storage::get($project->image));
+            $image->widen(600)->limitColors(255)->encode();
+            Storage::put($project->image, (string) $image);
+        } else {
             $project->update(array_filter($request->validated()));
         }
 
