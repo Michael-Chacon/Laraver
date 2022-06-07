@@ -5,8 +5,9 @@ namespace App\Listeners;
 use App\Events\projectSaved;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class OptimizeProjectImage
+class OptimizeProjectImage implements ShouldQueue
 {
     /**
      * Create the event listener.
